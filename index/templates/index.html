@@ -1,0 +1,94 @@
+<!--
+<?php
+session_start();
+unset($_SESSION['username']);
+
+/*
+if($_POST["username"]!='')
+{
+ echo $_POST["username"];
+ header("Location:Room.php");
+}
+if($_POST["username"]=='')
+ echo "empty";
+*/
+/*$db_helpclass = new DBSQL();
+
+echo gettype($_POST["username"]);
+echo gettype($_POST["icon"]);*/
+?>
+-->
+
+<!DOCTYPE html5>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static "index/css/homepage.css" %}" type="text/css" media="screen" />
+<script type="text/javascript" src="{% static "index/js/Base.js" %}"></script>
+</head>
+<body>
+<div id="body">
+	
+	<img id="logo" src="{% static "index/icon/dollars_logo.jpg" %}"/>
+	<div id = "login">
+			<form  action="/check/" method="POST" >
+			<ul class="icons">
+			<li>
+				<label>
+				<img src="{% static "index/icon/icon_tanaka.png" %}"/>
+				<input type="radio" value="tanaka" name="icon"/>
+				</label>
+			</li>
+			<li>
+				<label>
+				<img src="{% static "index/icon/icon_kanra.png" %}">
+				<input type="radio" value="kanra" name="icon"/>
+				</label>
+			</li>
+			<li>
+				<label>
+				<img src="{% static "index/icon/icon_setton.png" %}">
+				<input type="radio" value="setton" name="icon"/>
+				</label>
+			</li>
+			<li>
+				<label>
+				<img src="{% static "index/icon/icon_zawa.png" %}"/>
+				<input type="radio" value="zawa" name="icon"/>
+				</label>
+			</li>
+			<li>
+				<label>
+				<img src="{% static "index/icon/icon_zaika.png" %}"/>
+				<input type="radio" value="zaika" name="icon"/>
+				</label>
+			</li>
+			<li>
+				<label>
+				<img src="{% static "index/icon/icon_bakyura.png" %}"/>
+				<input type="radio" value="bakyura" name="icon"/>
+				</label>
+			</li>
+			<li>
+				<label>
+				<img src="{% static "index/icon/icon_gg.png" %}"/>
+				<input type="radio" value="gg" name="icon"/>
+				</label>
+			</li>
+			<li>
+				<label>
+				<img src="{% static "index/icon/icon_simon.png" %}"/>
+				<input type="radio" value="simon" name="icon"/>
+				</label>
+			</li>
+			</ul>
+			USER  NAME:
+			<input class="textbox" type="textbox" placeholder="YOUR NAME" maxlength="10" name="username" onfocus=""/>	
+			<input type="submit"  class="botton" value="login" name="login"/>
+			</form>
+	</div>
+</div>
+</body>
+</html>
