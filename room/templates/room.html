@@ -1,0 +1,110 @@
+{% load staticfiles %}
+<!DOCTYPE html5>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html"; charset="utf-8">
+    <script type="text/javascript" src="{% static "room/js/jquery-1.11.1.js" %}"></script>
+    <script type="text/javascript" src="{% static "room/js/jquery.gracefulWebSocket.js" %}"></script>
+    <link rel="stylesheet" href="{% static "room/css/chatroom.css" %}" type="text/css" media="screen" />
+
+
+    <script type="text/javascript">
+        $(document).ready( function() {
+        window.chat = {};
+        chat.ws = $.gracefulWebSocket("ws://127.0.0.1:1025/ws");
+        chat.send = function (message) {
+          chat.ws.send(message);
+        }
+        var loginMessage = "--{{ user.username }} logged in.";
+        var logoutMessage = "--{{ user.username }} logged out.";
+        var login=0;
+        var snd=new Audio("{% static "room/sound/sound.mp3" %}");
+        //chat.send(loginMessage);
+        //alert(){"Hi!"};
+        chat.ws.onmessage = function (event) {
+          //var messageFromServer = event.data;
+          if(!login){
+            chat.send(loginMessage);
+            login=1;
+          }
+          var sep = "$!!!$"
+          var message = event.data;
+          var messageFromServer = message.split(sep);
+          if(messageFromServer[1]){
+              snd.play();
+              var dl_element = document.createElement('dl');
+                dl_element.setAttribute("class", messageFromServer[0]);
+                //att.value=messageFromServer[1];
+                //dl_element.setAttribute(att);
+                var dt_element = document.createElement('dt');
+                  $(dt_element).prepend(messageFromServer[1]);
+                var dd_element = document.createElement('dd');
+                  $(dd_element).prepend(messageFromServer[2]);
+                $(dl_element).prepend(dd_element);
+                $(dl_element).prepend(dt_element);
+
+
+              //list_element.innerHTML = messageFromServer[3];
+              $("#chatbox").prepend(dl_element);
+
+          }
+          else{
+            if(messageFromServer!='connected ....\n'){
+                var line = document.createElement('dl');
+                $(line).prepend(messageFromServer);
+                $("#chatbox").prepend(line);
+            }
+          }
+        };
+
+        var inputBox = document.getElementById("inputbox");
+
+        sendmessage = function(type){
+            if(type==1){
+                chat.send(loginMessage);
+            }
+            else{
+                var sep = "$!!!$"
+                var icon = "{{ user.icon }}";
+                var name = "{{ user.username }}";
+                var data = icon.concat(sep, name, sep, inputbox.value);
+                chat.send(data);
+                inputbox.value="";
+           }
+        }
+
+        inputbox.addEventListener("keydown", function(e) {
+          if (!e) { var e = window.event; }
+          e.defaultPrevented;
+          if (e.keyCode == 13) {
+            e.defualtPrevented; // sometimes useful
+            //chat.send(inputbox.value);
+            //we here change the message into "array"
+            sendmessage();
+          }
+        }, false);
+
+        window.addEventListener("beforeunload", function () {chat.send(logoutMessage);});
+        });
+
+
+    </script>
+</head>
+
+<body>
+    <div id= "sendbox">
+        <form  id="messageform" name="sendform">
+            <h>{{ chat.name }}
+            </h>
+            <textarea name="text" id="inputbox" ></textarea>
+            <button type="button" id="post" onclick="sendmessage()">POST!</button>
+        </form>
+    </div>
+
+    <div id= "chatbox">
+    </div>
+
+
+</body>
+</html>

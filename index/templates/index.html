@@ -1,24 +1,3 @@
-<!--
-<?php
-session_start();
-unset($_SESSION['username']);
-
-/*
-if($_POST["username"]!='')
-{
- echo $_POST["username"];
- header("Location:Room.php");
-}
-if($_POST["username"]=='')
- echo "empty";
-*/
-/*$db_helpclass = new DBSQL();
-
-echo gettype($_POST["username"]);
-echo gettype($_POST["icon"]);*/
-?>
--->
-
 <!DOCTYPE html5>
 <html>
 <head>
@@ -30,10 +9,10 @@ echo gettype($_POST["icon"]);*/
 </head>
 <body>
 <div id="body">
-	
+
 	<img id="logo" src="{% static "index/icon/dollars_logo.jpg" %}"/>
 	<div id = "login">
-			<form  action="/check/" method="POST" >
+			<form  action="/room/" method="POST" >
 			<ul class="icons">
 			<li>
 				<label>
@@ -85,7 +64,7 @@ echo gettype($_POST["icon"]);*/
 			</li>
 			</ul>
 			USER  NAME:
-			<input class="textbox" type="textbox" placeholder="YOUR NAME" maxlength="10" name="username" onfocus=""/>	
+			<input class="textbox" type="textbox" placeholder="YOUR NAME" maxlength="10" name="username" onfocus=""/>
 			<input type="submit"  class="botton" value="login" name="login"/>
 			</form>
 	</div>
