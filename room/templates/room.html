@@ -82,6 +82,7 @@
             //chat.send(inputbox.value);
             //we here change the message into "array"
             sendmessage();
+            //inputbox.value="";
           }
         }, false);
 
@@ -97,7 +98,7 @@
         <form  id="messageform" name="sendform">
             <h>{{ chat.name }}
             </h>
-            <textarea name="text" id="inputbox" ></textarea>
+            <textarea name="text" id="inputbox" autofocus></textarea>
             <button type="button" id="post" onclick="sendmessage()">POST!</button>
         </form>
     </div>

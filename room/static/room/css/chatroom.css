@@ -29,7 +29,7 @@ form#messageform textarea{
 margin:auto;
 clear:both;
 display:block;
-width:480px;
+width:580px;
 height:4em;
 padding:10px;
 border-radius:10px 10px 10px 10px;
@@ -37,23 +37,29 @@ overflow-y:hidden;
 letter-spacing:1px;
 border:1px solid rgb(91,91,91);
 margin-bottom:5px;
+font-size: 20px;
 }
 
 form#messageform h{
-float:left;
+margin-left: auto;
+margin-right: auto;
+font-size: 24px;
+font-weight:bold;
 }
 
 form#messageform button{
 width:200px;
-font-size:12px;
+font-size:20px;
 font-family:Arial,Meriyo,sans-serif;
 font-weight:bold;
 }
 
 div#chatbox{
-width:590px;
+width:1000px;
 position:relative;
 top:150px;
+margin-left: auto;
+margin-right: auto;
 }
 
 dl{

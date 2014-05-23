@@ -11,7 +11,7 @@ body
 
 div#body
 {
-	width:620px;	
+	width:620px;
 	text-align:center;
 	background-color: ;
 	position:relative;
@@ -22,6 +22,7 @@ div#body
 img#logo
 {
 	position:relative;
+	width: 490px;
 }
 
 
