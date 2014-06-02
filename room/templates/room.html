@@ -12,8 +12,8 @@
     <script type="text/javascript">
         $(document).ready( function() {
         window.chat = {};
-        //chat.ws = $.gracefulWebSocket("ws://chat.miyuanbbs.com:1025/ws");
-        chat.ws = $.gracefulWebSocket("ws://127.0.0.1:1025/ws");
+	chat.ws = $.gracefulWebSocket("ws://202.121.179.253:1025/ws");
+        //chat.ws = $.gracefulWebSocket("ws://127.0.0.1:1025/ws");
         chat.send = function (message) {
           chat.ws.send(message);
         }
