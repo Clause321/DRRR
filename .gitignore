@@ -215,3 +215,4 @@ pip-log.txt
 .mr.developer.cfg
 twistd.pid
 sqlite_database_file
+DRRR/settings.py
